@@ -12,4 +12,8 @@ class AdminController extends Controller
     public function transaksi() {
         return view("admin.transaksi");
     }
+
+    public function dashboard() {
+        return view('admin.dashboard');
+    }
 }
