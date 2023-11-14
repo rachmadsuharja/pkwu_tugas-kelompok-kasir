@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Affiliate Dashboard - SB Admin Pro</title>
+        <title>CAFE</title>
         <link href="{{ asset('templates/sb-admin-pro/cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css') }}" rel="stylesheet" />
         <link href="{{ asset('templates/sb-admin-pro/css/styles.css') }}" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="{{ asset('templates/sb-admin-pro/assets/img/favicon.png') }}" />
@@ -27,14 +27,14 @@
                 </main>
             </div>
         </div>
-        <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../cdn.jsdelivr.net/npm/bootstrap%405.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
+        <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{{ ('templates/sb-admin-pro/cdn.jsdelivr.net/npm/bootstrap%405.2.3/dist/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+        <script src="{{ ('templates/sb-admin-pro/js/scripts.js') }}"></script>
         <script src="{{ asset('templates/sb-admin-pro/cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{ asset('templates/sb-admin-pro/assets/demo/chart-area-demo.js') }}"></script>
         <script src="{{ asset('templates/sb-admin-pro/assets/demo/chart-bar-demo.js') }}"></script>
         <script src="{{ asset('templates/sb-admin-pro/assets/demo/chart-pie-demo.js') }}"></script>
         <script src="{{ asset('templates/sb-admin-pro/cdn.jsdelivr.net/npm/litepicker/dist/bundle.js') }}" crossorigin="anonymous"></script>
-        <script src="{{ aseet('templates/sb-admin-pro/js/litepicker.js') }}"></script>
+        <script src="{{ asset('templates/sb-admin-pro/js/litepicker.js') }}"></script>
 
         <script src="{{ asset('templates/sb-admin-pro/assets.startbootstrap.com/js/sb-customizer.js') }}"></script>
         <sb-customizer project="sb-admin-pro"></sb-customizer>

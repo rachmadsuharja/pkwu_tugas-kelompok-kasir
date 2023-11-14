@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AdminController::class,'index'])->name('index');
-Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard')
-Route::get('transaksi', [TransaksiController::class,'index'])->name('transaksi');
+Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('transaction', [AdminController::class, 'transaksi'])->name('transaksi');
+Route::resource('menu', MenuController::class);
+Route::resource('history', HistoryController::class);
+Route::resource('category', CategoryController::class);

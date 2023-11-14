@@ -10,7 +10,7 @@ class AdminController extends Controller
         return view("admin.index");
     }
     public function transaksi() {
-        return view("admin.transaksi");
+        return view("admin.transaction.index");
     }
 
     public function dashboard() {
