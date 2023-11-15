@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('shift', ['Siang/06:00-18:00', 'Malam/18:00-06:00'])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
