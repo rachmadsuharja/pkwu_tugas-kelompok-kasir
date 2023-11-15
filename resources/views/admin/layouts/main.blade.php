@@ -23,6 +23,10 @@
                     <!-- Main page content-->
                     <div class="container-xl px-4 mt-5">
                         @yield('container')
+                        <table>
+                            <tr>asdasd </tr>
+                            <tr>asdasd </tr>
+                        </table>
                     </div>
                 </main>
             </div>
