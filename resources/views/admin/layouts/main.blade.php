@@ -11,6 +11,12 @@
         <link href="{{ asset('templates/sb-admin-pro/cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css') }}" rel="stylesheet" />
         <link href="{{ asset('templates/sb-admin-pro/css/styles.css') }}" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="{{ asset('templates/sb-admin-pro/assets/img/favicon.png') }}" />
+        <style>
+            label {
+                color: black;
+                font-size: .8em;
+            }
+        </style>
         <script data-search-pseudo-elements="" defer="" src="{{ asset('templates/sb-admin-pro/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{ asset('templates/sb-admin-pro/cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js') }}" crossorigin="anonymous"></script>
     </head>

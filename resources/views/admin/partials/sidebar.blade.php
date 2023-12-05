@@ -9,12 +9,12 @@
                     Dashboard
                 </a>
                 <!-- Sidenav Accordion (Applications)-->
-                <a class="nav-link collapsed {{ (Request::routeIs('menu.index','category.index') ? 'active' : '') }}" href="{{ route('menu.index') }}" data-bs-toggle="collapse" data-bs-target="#collapseApps" aria-expanded="false" aria-controls="collapseApps">
+                <a class="nav-link collapsed {{ (Request::routeIs('menu.index','category.index') ? 'active' : '') }}" href="{{ route('menu.index') }}" data-bs-toggle="collapse" data-bs-target="#collapseApps" aria-expanded="true" aria-controls="collapseApps">
                     <div class="nav-link-icon"><i data-feather="coffee"></i></div>
                     Menu
                     <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse" id="collapseApps" data-bs-parent="#accordionSidenav">
+                <div class="collapse {{ (Request::routeIs('menu.index','category.index') ? 'show' : '') }}" id="collapseApps" data-bs-parent="#accordionSidenav">
                     <nav class="sidenav-menu-nested nav accordion" id="accordionSidenavAppsMenu">
                         <!-- Nested Sidenav Accordion (Apps -> Knowledge Base)-->
                         <a class="nav-link {{ (Request::routeIs('category.index') ? 'active' : '') }}" href="{{ route('category.index') }}">

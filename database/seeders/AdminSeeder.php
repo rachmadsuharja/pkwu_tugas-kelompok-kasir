@@ -34,13 +34,5 @@ class AdminSeeder extends Seeder
             'password'=> Hash::make('fhi123'),
             'shift' => 'Malam/18:00-06:00',
         ]);
-
-        User::create([
-            'nama'=> 'Eliezer Juan',
-            'username'=> 'eliezerjuan',
-            'password'=> Hash::make('123456'),
-            'shift' => 'Siang/18:00-06:00',
-        ]);
-
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_manu');
+            $table->string('nama_menu');
             $table->unsignedBigInteger('id_kategori');
             $table->string('harga');
             $table->timestamps();
