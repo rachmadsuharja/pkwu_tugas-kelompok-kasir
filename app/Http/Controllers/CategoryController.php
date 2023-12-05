@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreCategoryRequest;
@@ -24,15 +25,14 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCategoryRequest $request)
+    public function store(Request $request)
     {
-        dd(Auth::user());
         $validator = Validator::make($request->all(), [
             'nama_kategori' => 'required'
         ]);
@@ -69,16 +69,34 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCategoryRequest $request, Category $category)
+    public function update(Request $request, $id)
     {
-        //
+        $data = Category::findOrFail($id);
+        $validator = Validator::make($request->all(), [
+            'nama_kategori' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            toastr()->error('Gagal Mengubah Kategori', 'Gagal');
+            return back();
+        }
+
+        $data->update([
+            'nama_kategori' => $request->nama_kategori
+        ]);
+
+        toastr()->success('Berhasil Mengubah Kategori', 'Berhasil');
+        return to_route('category.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        //
+        $data = Category::findOrFail($id);
+        $data->delete();
+        toastr()->success('Berhasil Menghapus Data', 'Berhasil');
+        return to_route('category.index');
     }
 }

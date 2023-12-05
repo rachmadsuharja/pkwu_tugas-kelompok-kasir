@@ -29,7 +29,7 @@ class HistoryController extends Controller
      */
     public function store(StoreHistoryRequest $request)
     {
-        //
+        
     }
 
     /**
