@@ -29,6 +29,8 @@
         </div>
         <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{{ asset('templates/sb-admin-pro/cdn.jsdelivr.net/npm/bootstrap%405.2.3/dist/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{ asset('templates/sb-admin-pro/js/scripts.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{{ ('templates/sb-admin-pro/js/datatables/datatables-simple-demo.js') }}"></script>
         <script src="{{ asset('templates/sb-admin-pro/cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{ asset('templates/sb-admin-pro/assets/demo/chart-area-demo.js') }}"></script>
         <script src="{{ asset('templates/sb-admin-pro/assets/demo/chart-bar-demo.js') }}"></script>

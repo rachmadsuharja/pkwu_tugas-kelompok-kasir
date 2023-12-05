@@ -38,8 +38,8 @@
         <!-- Sidenav Footer-->
         <div class="sidenav-footer">
             <div class="sidenav-footer-content">
-                <div class="sidenav-footer-subtitle">Shift: Siang</div>
-                <div class="sidenav-footer-title">Nama Kasir</div>
+                <div class="sidenav-footer-title">{{ Auth::user()->nama }}</div>
+                <div class="sidenav-footer-subtitle"><b>Shift:</b> {{ Auth::user()->shift }}</div>
             </div>
         </div>
     </nav>

@@ -105,8 +105,8 @@
                 <h6 class="dropdown-header d-flex align-items-center">
                     <img class="dropdown-user-img" src="{{ asset('images/user.jpg') }}" />
                     <div class="dropdown-user-details">
-                        <div class="dropdown-user-details-name">Valerie Luna</div>
-                        <div class="dropdown-user-details-email"><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="e89e849d8689a8898784c68b8785">[email&#160;protected]</a></div>
+                        <div class="dropdown-user-details-name">{{ Auth::user()->nama }}</div>
+                        <div class="dropdown-user-details-email"><a href="#" class="__cf_email__" data-cfemail="e89e849d8689a8898784c68b8785">{{ Auth::user()->username }}</a></div>
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>

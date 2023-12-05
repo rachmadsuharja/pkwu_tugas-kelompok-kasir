@@ -21,7 +21,7 @@ use App\Http\Controllers\TransaksiController;
 
 Route::middleware('guest')->group(function () {
     Route::get('/', [AuthController::class,'login'])->name('login');
-    Route::post('/postLogin', [AuthController::class, 'postLogin'])->name('post-login');
+    Route::post('postLogin', [AuthController::class, 'postLogin'])->name('post-login');
 });
 
 Route::middleware('admin')->group(function () {

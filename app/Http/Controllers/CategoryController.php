@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 
@@ -13,7 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $categories = Category::all();
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -29,7 +32,22 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        dd(Auth::user());
+        $validator = Validator::make($request->all(), [
+            'nama_kategori' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            toastr()->error('Gagal Menambahkan Kategori', 'Gagal');
+            return back();
+        }
+
+        Category::create([
+            'nama_kategori' => $request->nama_kategori
+        ]);
+
+        toastr()->success('Berhasil Menambahkan Kategori', 'Berhasil');
+        return to_route('category.index');
     }
 
     /**
