@@ -110,7 +110,7 @@
                     </div>
                 </h6>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{{ route('logout') }}">
+                <a class="dropdown-item" onclick="confirmLogout()">
                     <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
                     Logout
                 </a>
@@ -118,3 +118,22 @@
         </li>
     </ul>
 </nav>
+
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: "Keluar",
+            text: "Apakah anda yakin ingin keluar?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya",
+            cancelButtonText: "Batal",
+            }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = `{{ route('logout') }}`;
+            }
+        });
+    }
+</script>

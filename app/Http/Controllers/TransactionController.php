@@ -43,7 +43,7 @@ class TransactionController extends Controller
         $harga = $request->total_harga;
         $bayar = $request->total_bayar;
         $validator = Validator::make($request->all(), [
-            'total_harga' => 'required',
+            'total_harga' => 'required|gt:0',
             'total_bayar' => 'required|gt:0'
         ]);
         if ($validator->fails()) {

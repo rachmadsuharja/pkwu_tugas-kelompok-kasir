@@ -31,7 +31,7 @@
                                 <td>{{ $menu->kategori->nama_kategori }}</td>
                                 <td>{{ $menu->harga }}</td>
                                 <td>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addToCart{{ $menu->id }}" class="btn btn-primary btn-sm">Masukkan Keranjang</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addToCart{{ $menu->id }}" class="btn btn-warning btn-sm">Masukkan Keranjang</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="addToCart{{ $menu->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-sm" role="document">
@@ -69,43 +69,45 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
                 <h6>Keranjang</h6>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Nama Menu</th>
-                            <th>Harga Satuan</th>
-                            <th>Jumlah Beli</th>
-                            <th>Harga Total</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($carts as $cart)
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>{{ $cart->nama_menu }}</td>
-                                <td>{{ $cart->harga_menu }}</td>
-                                <td>{{ $cart->jumlah_beli }}</td>
-                                <td>{{ $cart->total_harga }}</td>
-                                <td>
-                                    <form action="{{ route('cart.destroy', $cart->id) }}" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit" class="btn btn-transparent p-0 m-0 fs-4"><i class="fa-solid fa-circle-xmark text-danger"></i></button>
-                                    </form>
-                                </td>
+                                <th>Nama Menu</th>
+                                <th>Harga Satuan</th>
+                                <th>Jumlah Beli</th>
+                                <th>Harga Total</th>
+                                <th>Aksi</th>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5" class="text-center">Tidak ada data</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @forelse ($carts as $cart)
+                                <tr>
+                                    <td>{{ $cart->nama_menu }}</td>
+                                    <td>{{ $cart->harga_menu }}</td>
+                                    <td>{{ $cart->jumlah_beli }}</td>
+                                    <td>{{ $cart->total_harga }}</td>
+                                    <td>
+                                        <form action="{{ route('cart.destroy', $cart->id) }}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit" class="btn btn-transparent p-0 m-0 fs-4"><i class="fa-solid fa-circle-xmark text-danger"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center">Tidak ada data</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('transaction.store') }}" method="post">
+                        <form action="{{ route('transaction.store') }}" id="confirmPayment" onsubmit="paymentConfirmation(event)" method="post">
                             @csrf
                             <div class="mb-2">
                                 <label for="" class="form-label">Total Harga</label>
@@ -123,4 +125,27 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    <script>
+        function paymentConfirmation(event) {
+            event.preventDefault();
+
+            Swal.fire({
+                title: "Checkout",
+                text: "Konfirmasi Pembayaran",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Batal",
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('confirmPayment').submit();
+                }
+            });
+        }
+    </script>
 @endsection

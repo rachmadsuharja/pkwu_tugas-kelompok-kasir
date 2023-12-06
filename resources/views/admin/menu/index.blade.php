@@ -59,7 +59,7 @@
                             <td>{{ $menu->kategori->nama_kategori }}</td>
                             <td>{{ $menu->harga }}</td>
                             <td>
-                                <form action="{{ route('menu.destroy', $menu->id) }}" id="deleteCategory{{ $menu->id }}" onsubmit="deleteCategory(event, {{ $menu->id }})" method="post">
+                                <form action="{{ route('menu.destroy', $menu->id) }}" id="deleteMenu{{ $menu->id }}" onsubmit="deleteMenu(event, {{ $menu->id }})" method="post">
                                     @csrf
                                     @method('delete')
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#editMenu{{ $menu->id }}" class="btn btn-primary btn-sm">Edit</button>
@@ -112,7 +112,7 @@
 
 @section('script')
     <script>
-        function deleteCategory(event, id) {
+        function deleteMenu(event, id) {
             event.preventDefault();
             Swal.fire({
                 title: "Hapus",
@@ -121,10 +121,11 @@
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Ya",
+                cancelButtonText: "Batal",
                 }).then((result) => {
                 if (result.isConfirmed) {
-
+                    document.getElementById('deleteMenu'+id).submit();
                 }
             });
         }
