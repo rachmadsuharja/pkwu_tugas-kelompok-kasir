@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_menu');
             $table->string('harga_menu');
-            $table->string('total_beli');
+            $table->string('jumlah_beli');
             $table->string('total_harga');
             $table->timestamps();
         });

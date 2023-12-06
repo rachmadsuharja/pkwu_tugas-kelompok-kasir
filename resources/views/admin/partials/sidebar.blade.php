@@ -25,7 +25,7 @@
                         </a>
                     </nav>
                 </div>
-                <a class="nav-link {{ (Request::routeIs('transaksi') ? 'active' : '') }}" href="{{ route('transaksi') }}">
+                <a class="nav-link {{ (Request::routeIs('transaction.index') ? 'active' : '') }}" href="{{ route('transaction.index') }}">
                     <div class="nav-link-icon"><i data-feather="dollar-sign"></i></div>
                     Transaksi
                 </a>

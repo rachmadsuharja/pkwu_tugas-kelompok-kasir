@@ -17,6 +17,7 @@
                 font-size: .8em;
             }
         </style>
+        @yield('style')
         <script data-search-pseudo-elements="" defer="" src="{{ asset('templates/sb-admin-pro/cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/js/all.min.js') }}" crossorigin="anonymous"></script>
         <script src="{{ asset('templates/sb-admin-pro/cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js') }}" crossorigin="anonymous"></script>
     </head>

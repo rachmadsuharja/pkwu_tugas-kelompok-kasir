@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
-use App\Http\Requests\StoreCartRequest;
+use Illuminate\Http\Request;
 use App\Http\Requests\UpdateCartRequest;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -27,9 +28,30 @@ class CartController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCartRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'nama_menu' => 'required',
+            'harga_menu' => 'required',
+            'jumlah_beli' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            toastr()->error('Gagal Menambahkan Ke Keranjang', 'Gagal');
+            return to_route('transaction.index');
+        }
+
+        $totalHarga = $request->harga_menu * $request->jumlah_beli;
+
+        Cart::create([
+            'nama_menu' => $request->nama_menu,
+            'harga_menu' => $request->harga_menu,
+            'jumlah_beli' => $request->jumlah_beli,
+            'total_harga' => $totalHarga
+        ]);
+
+        toastr()->success('Berhasil Ditambahkan ke Keranjang');
+        return to_route('transaction.index');
     }
 
     /**
@@ -59,8 +81,10 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cart $cart)
+    public function destroy($id)
     {
-        //
+        $item = Cart::findOrFail($id);
+        $item->delete();
+        return to_route('transaction.index');
     }
 }

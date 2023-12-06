@@ -5,9 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Cart extends Model
+class TransactionDetail extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['nama_menu','harga_menu','jumlah_beli','total_harga'];
 }
