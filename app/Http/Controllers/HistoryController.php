@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\History;
 use App\Http\Requests\StoreHistoryRequest;
 use App\Http\Requests\UpdateHistoryRequest;
+use App\Models\TransactionDetail;
 
 class HistoryController extends Controller
 {
@@ -13,7 +14,9 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        return view('admin.history.index');
+        $histories = History::all();
+        $details = TransactionDetail::all();
+        return view('admin.history.index', compact('histories', 'details'));
     }
 
     /**
@@ -29,15 +32,17 @@ class HistoryController extends Controller
      */
     public function store(StoreHistoryRequest $request)
     {
-        
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(History $history)
+    public function show($id)
     {
-        //
+        $history =  History::where('no_transaksi', $id)->first();
+        $details = TransactionDetail::where('no_transaksi', $id)->get();
+        return view('admin.history.detail', compact('history','details'));
     }
 
     /**

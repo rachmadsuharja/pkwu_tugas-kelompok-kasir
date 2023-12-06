@@ -29,7 +29,7 @@
                     <div class="nav-link-icon"><i data-feather="dollar-sign"></i></div>
                     Transaksi
                 </a>
-                <a class="nav-link {{ (Request::routeIs('history.index') ? 'active' : '') }}" href="{{ route('history.index') }}">
+                <a class="nav-link {{ (Request::routeIs('history.index', 'history.show') ? 'active' : '') }}" href="{{ route('history.index') }}">
                     <div class="nav-link-icon"><i data-feather="book"></i></div>
                     Laporan Penjualan
                 </a>

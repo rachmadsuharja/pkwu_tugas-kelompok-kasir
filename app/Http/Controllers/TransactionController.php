@@ -55,8 +55,8 @@ class TransactionController extends Controller
             return to_route('transaction.index');
         }
         $now = Carbon::now();
-        $nomorTransaksi = $now->format('d/m/y/').rand(1000, 999999999);
-        $kasir = Auth::user()->username;
+        $nomorTransaksi = $now->format('d'.'m'.'y').rand(100000, 999999);
+        $kasir = Auth::user()->nama;
         $cart = Cart::pluck('nama_menu')->toArray();
         $item = implode(', ', $cart);
         $kembalian = $bayar - $harga;
