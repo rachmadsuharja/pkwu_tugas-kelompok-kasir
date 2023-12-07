@@ -88,7 +88,7 @@
                         @else
                             <img class="img-fluid mb-5" src="{{ ('templates/sb-admin-pro/assets/img/illustrations/data-report.svg') }}" />
                             <h4>{{ $terlaris->nama_menu }}</h4>
-                            <p class="mb-4">Tidak ada barang terlaris saat ini</p>
+                            <p class="mb-4">Produk terlaris pada bulan ini adalah {{ $terlaris->nama_menu }}</p>
                         @endif
                     </div>
                 </div>
