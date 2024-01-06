@@ -9,7 +9,7 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nama_menu', 'id_kategori', 'harga'];
+    protected $fillable = ['nama_menu', 'id_kategori', 'harga', 'status'];
 
     public function kategori() {
         return $this->belongsTo(Category::class, 'id_kategori');

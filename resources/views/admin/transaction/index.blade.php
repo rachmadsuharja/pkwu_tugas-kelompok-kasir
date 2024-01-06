@@ -34,34 +34,38 @@
                                 <td>{{ $menu->kategori->nama_kategori }}</td>
                                 <td>{{ $menu->harga }}</td>
                                 <td>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#addToCart{{ $menu->id }}" class="btn btn-warning btn-sm">Masukkan Keranjang</button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="addToCart{{ $menu->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-sm" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Masukkan ke Keranjang</h5>
+                                    @if ($menu->status == 'Tersedia')
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#addToCart{{ $menu->id }}" class="btn btn-warning btn-sm">Masukkan Keranjang</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="addToCart{{ $menu->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Masukkan ke Keranjang</h5>
+                                                    </div>
+                                                    <form action="{{ route('cart.store') }}" method="POST">
+                                                        @csrf
+                                                        <div class="modal-body">
+                                                            <div class="mb-3">
+                                                                <input type="hidden" name="nama_menu" value="{{ $menu->nama_menu }}">
+                                                                <input type="hidden" name="harga_menu" value="{{ $menu->harga }}">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="">Jumlah Beli</label>
+                                                                <input class="form-control" id="jumlah_beli" name="jumlah_beli" type="number" placeholder="Jumlah Dibeli..." />
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                                                            <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                                <form action="{{ route('cart.store') }}" method="POST">
-                                                    @csrf
-                                                    <div class="modal-body">
-                                                        <div class="mb-3">
-                                                            <input type="hidden" name="nama_menu" value="{{ $menu->nama_menu }}">
-                                                            <input type="hidden" name="harga_menu" value="{{ $menu->harga }}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label for="">Jumlah Beli</label>
-                                                            <input class="form-control" id="jumlah_beli" name="jumlah_beli" type="number" placeholder="Jumlah Dibeli..." />
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
-                                    </div>
+                                    @elseif ($menu->status == 'Tidak Tersedia')
+                                        <button type="button" class="btn btn-warning btn-sm disabled">Masukkan Keranjang</button>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach

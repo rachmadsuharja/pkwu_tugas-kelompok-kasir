@@ -38,6 +38,7 @@ class MenuController extends Controller
             'nama_menu' => 'required',
             'kategori' => 'required',
             'harga' => 'required',
+            'status' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -48,7 +49,8 @@ class MenuController extends Controller
         Menu::create([
             'nama_menu' => $request->nama_menu,
             'id_kategori' => $request->kategori,
-            'harga' => $request->harga
+            'harga' => $request->harga,
+            'status' => $request->status
         ]);
 
         toastr()->success('Berhasil Menambah Menu', 'Berhasil');
@@ -81,6 +83,7 @@ class MenuController extends Controller
             'nama_menu' => 'required',
             'kategori' => 'required',
             'harga' => 'required',
+            'status' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -91,7 +94,8 @@ class MenuController extends Controller
         $data->update([
             'nama_menu' => $request->nama_menu,
             'id_kategori' => $request->kategori,
-            'harga' => $request->harga
+            'harga' => $request->harga,
+            'status' => $request->status
         ]);
 
         toastr()->success('Berhasil Mengubah Menu', 'Berhasil');

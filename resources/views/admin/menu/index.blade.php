@@ -29,9 +29,18 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="">Harga</label>
-                                    <input class="form-control" id="harga" name="harga" type="number" placeholder="Harga Menu ..." />
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <label for="">Harga</label>
+                                        <input class="form-control" id="harga" name="harga" type="number" placeholder="Harga Menu ..." />
+                                    </div>
+                                    <div class="col">
+                                        <label for="">Status</label>
+                                        <select name="status" class="form-control" id="status">
+                                            <option value="Tersedia">Tersedia</option>
+                                            <option value="Tidak Tersedia">Tidak Tersedia</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -49,6 +58,7 @@
                         <th>Nama Menu</th>
                         <th>Kategori</th>
                         <th>Harga</th>
+                        <th>Status</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -58,6 +68,7 @@
                             <td>{{ $menu->nama_menu }}</td>
                             <td>{{ $menu->kategori->nama_kategori }}</td>
                             <td>{{ $menu->harga }}</td>
+                            <td>{{ $menu->status }}</td>
                             <td>
                                 <form action="{{ route('menu.destroy', $menu->id) }}" id="deleteMenu{{ $menu->id }}" onsubmit="deleteMenu(event, {{ $menu->id }})" method="post">
                                     @csrf
@@ -85,15 +96,24 @@
                                             <div class="mb-3">
                                                 <label class="small mb-1" for="inputEmailAddress">Kategori</label>
                                                 <select name="kategori" class="form-control" id="kategori">
-                                                    <option value="{{ $menu->id_kategori }}" selected disabled>{{ $menu->kategori->nama_kategori }}</option>
+                                                    <option value="{{ $menu->id_kategori }}" selected>{{ $menu->kategori->nama_kategori }}</option>
                                                     @foreach ($categories as $category)
                                                         <option value="{{ $category->id }}">{{ $category->nama_kategori }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="mb-3">
-                                                <label for="">Harga</label>
-                                                <input class="form-control" id="harga" name="harga" type="number" value="{{ $menu->harga }}" placeholder="Harga Menu ..." />
+                                            <div class="row mb-3">
+                                                <div class="col">
+                                                    <label for="">Harga</label>
+                                                    <input class="form-control" id="harga" name="harga" value="{{ $menu->harga }}" type="number" placeholder="Harga Menu ..." />
+                                                </div>
+                                                <div class="col">
+                                                    <label for="">Status</label>
+                                                    <select name="status" class="form-control" id="status">
+                                                        <option value="Tersedia" {{ $menu->status == 'Tersedia' ? 'selected' : '' }}>Tersedia</option>
+                                                        <option value="Tidak Tersedia" {{ $menu->status == 'Tidak Tersedia' ? 'selected' : '' }}>Tidak Tersedia</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">

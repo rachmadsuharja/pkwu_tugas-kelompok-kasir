@@ -16,27 +16,32 @@ class MenuSeeder extends Seeder
         Menu::create([
             'nama_menu' => 'Sweet Tea',
             'id_kategori' => 1,
-            'harga' => 5000
+            'harga' => 5000,
+            'status' => 'Tersedia'
         ]);
         Menu::create([
             'nama_menu' => 'Sweet Tea',
             'id_kategori' => 2,
-            'harga' => 5000
+            'harga' => 5000,
+            'status' => 'Tersedia'
         ]);
         Menu::create([
             'nama_menu' => 'Expresso',
             'id_kategori' => 1,
-            'harga' => 8000
+            'harga' => 8000,
+            'status' => 'Tersedia'
         ]);
         Menu::create([
             'nama_menu' => 'Expresso',
             'id_kategori' => 2,
-            'harga' => 8000
+            'harga' => 8000,
+            'status' => 'Tersedia'
         ]);
         Menu::create([
             'nama_menu' => 'Indomie Goreng',
             'id_kategori' => 3,
-            'harga' => 8000
+            'harga' => 8000,
+            'status' => 'Tersedia'
         ]);
     }
 }
