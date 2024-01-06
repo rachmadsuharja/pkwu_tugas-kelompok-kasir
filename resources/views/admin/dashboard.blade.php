@@ -40,7 +40,7 @@
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
                                 <div class="small fw-bold text-primary mb-1">Jumlah Order (perbulan)</div>
-                                <div class="h5">{{ $order }}</div>
+                                <div class="h5">{{ number_format($order, 0) }}</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-hand-holding-hand fa-2x text-gray-200"></i></div>
                         </div>
@@ -68,7 +68,7 @@
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
                                 <div class="small fw-bold text-success mb-1">Pendapatan (perbulan)</div>
-                                <div class="h5">{{ $pendapatan }}</div>
+                                <div class="h5">{{ number_format($pendapatan, 0) }}</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-sack-dollar fa-2x text-gray-200"></i></div>
                         </div>
@@ -98,7 +98,7 @@
                 <div class="card mb-4">
                     <div class="card-header">Pendapatan perbulan</div>
                     <div class="card-body">
-                        <div class="chart-area"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
+                        <div class="chart-area"><canvas id="monthlyIncome" width="100%" height="30"></canvas></div>
                     </div>
                 </div>
                 {{-- <div class="row">
@@ -154,4 +154,127 @@
                 </div> --}}
             </div>
         </div>
+@endsection
+
+@section('script')
+    <script>
+        // Area Chart Example
+        var ctx = document.getElementById("monthlyIncome");
+        var myLineChart = new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: [
+                    "Jan",
+                    "Feb",
+                    "Mar",
+                    "Apr",
+                    "May",
+                    "Jun",
+                    "Jul",
+                    "Aug",
+                    "Sep",
+                    "Oct",
+                    "Nov",
+                    "Dec"
+                ],
+                datasets: [{
+                    label: "Earnings",
+                    lineTension: 0.3,
+                    backgroundColor: "rgba(0, 97, 242, 0.05)",
+                    borderColor: "rgba(0, 97, 242, 1)",
+                    pointRadius: 3,
+                    pointBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHoverRadius: 3,
+                    pointHoverBackgroundColor: "rgba(0, 97, 242, 1)",
+                    pointHoverBorderColor: "rgba(0, 97, 242, 1)",
+                    pointHitRadius: 10,
+                    pointBorderWidth: 2,
+                    data: [
+                        `{{ $incomeChart['Jan'] }}`,
+                        `{{ $incomeChart['Feb'] }}`,
+                        `{{ $incomeChart['Mar'] }}`,
+                        `{{ $incomeChart['Apr'] }}`,
+                        `{{ $incomeChart['May'] }}`,
+                        `{{ $incomeChart['Jun'] }}`,
+                        `{{ $incomeChart['Jul'] }}`,
+                        `{{ $incomeChart['Aug'] }}`,
+                        `{{ $incomeChart['Sep'] }}`,
+                        `{{ $incomeChart['Oct'] }}`,
+                        `{{ $incomeChart['Nov'] }}`,
+                        `{{ $incomeChart['Dec'] }}`,
+                    ]
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                layout: {
+                    padding: {
+                        left: 10,
+                        right: 25,
+                        top: 25,
+                        bottom: 0
+                    }
+                },
+                scales: {
+                    xAxes: [{
+                        time: {
+                            unit: "date"
+                        },
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            maxTicksLimit: 7
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            maxTicksLimit: 5,
+                            padding: 10,
+                            // Include a dollar sign in the ticks
+                            callback: function(value, index, values) {
+                                return number_format(value);
+                            }
+                        },
+                        gridLines: {
+                            color: "rgb(234, 236, 244)",
+                            zeroLineColor: "rgb(234, 236, 244)",
+                            drawBorder: false,
+                            borderDash: [2],
+                            zeroLineBorderDash: [2]
+                        }
+                    }]
+                },
+                legend: {
+                    display: false
+                },
+                tooltips: {
+                    backgroundColor: "rgb(255,255,255)",
+                    bodyFontColor: "#858796",
+                    titleMarginBottom: 10,
+                    titleFontColor: "#6e707e",
+                    titleFontSize: 14,
+                    borderColor: "#dddfeb",
+                    borderWidth: 1,
+                    xPadding: 15,
+                    yPadding: 15,
+                    displayColors: false,
+                    intersect: false,
+                    mode: "index",
+                    caretPadding: 10,
+                    callbacks: {
+                        label: function(tooltipItem, chart) {
+                            var datasetLabel =
+                                chart.datasets[tooltipItem.datasetIndex].label || "";
+                            return "Rp. " + number_format(tooltipItem.yLabel);
+                        }
+                    }
+                }
+            }
+        });
+
+
+    </script>
 @endsection
