@@ -80,7 +80,7 @@ class TransactionController extends Controller
         }
         Cart::truncate();
         toastr()->success('Berhasil');
-        return to_route('transaction.index');
+        return to_route('history.index');
     }
 
     /**

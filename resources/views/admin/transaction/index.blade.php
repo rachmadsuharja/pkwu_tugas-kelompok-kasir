@@ -10,9 +10,12 @@
 
 @section('container')
 <div class="card mb-4">
-    <div class="card-header">Transaksi</div>
+    <div class="card-header d-flex justify-content-between">
+        Transaksi
+        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="collapse" data-bs-target="#menuList" aria-expanded="false">Lihat Menu</button>
+    </div>
     <div class="card-body">
-        <div class="row mb-4">
+        <div class="row collapse mb-4" id="menuList">
             <div class="col">
                 <h6>Daftar Menu</h6>
                 <table id="datatablesSimple">
