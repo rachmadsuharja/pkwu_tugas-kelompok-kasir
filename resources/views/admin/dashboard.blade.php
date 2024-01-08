@@ -2,6 +2,7 @@
 
 @php
     use Carbon\Carbon;
+    setlocale(LC_TIME, 'id_ID');
     $now = Carbon::now();
 @endphp
 
@@ -13,6 +14,49 @@
                 <div class="small">
                     <span class="fw-500 text-primary">{{ $now->format('D') }}</span>
                     · {{ $now->format('F d, Y') }} · {{ $now->format('g:i A') }}
+                </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+                <!-- Dashboard info widget 3-->
+                <div class="card border-start-lg border-start-success">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div class="flex-grow-1">
+                                <div class="small fw-bold text-success mb-1">Modal Hari Ini</div>
+                                <div class="h5">{{ number_format($modal->modal) }}</div>
+                                <div class="text-xs fw-bold text-gray d-inline-flex align-items-center">
+                                    diupdate pada {{ Carbon::parse($modal->updated_at)->locale('id_ID')->format('D, d-m-Y') }}
+                                </div>
+                            </div>
+                            <div class="ms-2">
+                                <button class="btn btn-transparent" data-bs-toggle="modal" data-bs-target="#todaysCapital">
+                                    <i class="fas fa-edit fa-2x text-gray-500"></i>
+                                </button>
+                                <div class="modal fade" id="todaysCapital" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Tentukan Modal Hari Ini</h5>
+                                            </div>
+                                            <form action="{{ route('update-capital', 1) }}" method="POST">
+                                                @csrf
+                                                @method('put')
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <input class="form-control" name="modal" type="number" value="{{ $modal->modal }}" placeholder="Jumlah modal hari ini?" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                                                    <button type="submit" class="btn btn-primary btn-sm">Perbarui</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

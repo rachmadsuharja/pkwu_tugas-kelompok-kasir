@@ -28,6 +28,7 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('admin')->group(function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+    Route::put('capital-update/{id}', [AdminController::class, 'updateCapital'])->name('update-capital');
     Route::resource('transaction', TransactionController::class);
     Route::resource('cart', CartController::class);
     Route::resource('menu', MenuController::class);

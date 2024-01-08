@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Menu;
 use App\Models\History;
 use App\Models\Category;
+use App\Models\Finance;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +20,7 @@ class AdminController extends Controller
 
     public function dashboard() {
         $menu = Menu::all();
+        $modal = Finance::findOrFail(1);
         $terlaris = TransactionDetail::select('nama_menu', DB::raw('SUM(jumlah_beli) as total_terjual'))
         ->whereMonth('created_at', now()->month)
         ->whereYear('created_at', now()->year)
@@ -59,6 +61,19 @@ class AdminController extends Controller
             'Dec' => $dec,
         ];
 
-        return view('admin.dashboard', compact('menu','terlaris','order','pendapatan','incomeChart'));
+        return view('admin.dashboard', compact('menu','terlaris','order','pendapatan','incomeChart', 'modal'));
+    }
+
+    public function updateCapital(Request $request, $id) {
+        $this->validate($request, [
+            'modal' => 'nullable|numeric|gt:0'
+        ]);
+        $todaysCapital = Finance::findOrFail($id);
+        $todaysCapital->update([
+            'modal' => $request->modal
+        ]);
+
+        toastr()->success('Berhasil memperbarui modal', 'Berhasil');
+        return to_route('dashboard');
     }
 }

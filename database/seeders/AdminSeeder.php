@@ -18,14 +18,14 @@ class AdminSeeder extends Seeder
             'nama' => 'Rachmad Suharja',
             'username'=> 'rachmadsuharja',
             'password' => Hash::make('harja123'),
-            'shift' => 'Siang/06:00-18:00',
+            'shift' => 'Pagi/06:00-14:00',
         ]);
 
         User::create([
-            'nama'=> 'Rohan Dwi Cahyono',
-            'username'=> 'rohandc',
-            'password'=> Hash::make('123456'),
-            'shift' => 'Malam/18:00-06:00',
+            'nama'=> 'Programmer',
+            'username'=> 'programmer',
+            'password'=> Hash::make('programmer123'),
+            'shift' => 'Sore/14:00-23:00',
         ]);
     }
 }

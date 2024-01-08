@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             CategorySeeder::class,
-            MenuSeeder::class
+            MenuSeeder::class,
+            CapitalSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 
