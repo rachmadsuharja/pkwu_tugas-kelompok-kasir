@@ -29,7 +29,7 @@
                                     <td>{{ Carbon::parse($history->created_at)->isoFormat('h:m A, DD-MM-YYYY') }}</td>
                                     <td class="d-flex flex-row">
                                         <a href="{{ route('history.show', $history->no_transaksi) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></a>
-                                        <button class="btn btn-warning btn-sm"><i class="fa-solid fa-print"></i></button>
+                                        <button onclick="printInvoice('{{ $history->no_transaksi }}')" class="btn btn-warning btn-sm"><i class="fa-solid fa-print"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -39,4 +39,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        function printInvoice(id) {
+            let url = `{{ route('print-invoice', ':id') }}`;
+            url = url.replace(':id', id);
+            window.location.href = url;
+        };
+    </script>
 @endsection

@@ -32,6 +32,7 @@ Route::middleware('admin')->group(function () {
     Route::resource('cart', CartController::class);
     Route::resource('menu', MenuController::class);
     Route::resource('history', HistoryController::class);
+    Route::get('invoice/{id}', [HistoryController::class, 'printInvoice'])->name('print-invoice');
     Route::resource('category', CategoryController::class);
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

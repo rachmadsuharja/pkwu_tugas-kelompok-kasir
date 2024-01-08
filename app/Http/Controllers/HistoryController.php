@@ -6,6 +6,7 @@ use App\Models\History;
 use App\Http\Requests\StoreHistoryRequest;
 use App\Http\Requests\UpdateHistoryRequest;
 use App\Models\TransactionDetail;
+use Dompdf\Dompdf;
 
 class HistoryController extends Controller
 {
@@ -67,5 +68,11 @@ class HistoryController extends Controller
     public function destroy(History $history)
     {
         //
+    }
+
+    public function printInvoice($id) {
+        $history =  History::where('no_transaksi', $id)->first();
+        $details = TransactionDetail::where('no_transaksi', $id)->get();
+        return view('admin.history.invoice', compact('history','details'));
     }
 }
