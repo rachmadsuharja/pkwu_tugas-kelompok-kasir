@@ -1,5 +1,9 @@
 @extends('admin.layouts.main')
 
+@php
+    use Carbon\Carbon;
+@endphp
+
 @section('container')
 <div class="card mb-4">
     <div class="card-header fw-bold">
@@ -10,6 +14,11 @@
         <div class="row mb-4">
             <div class="col">
                 <table class="w-50">
+                    <tr>
+                        <th>Tanggal Transaksi</th>
+                        <td>:</td>
+                        <td>{{ Carbon::parse($history->created_at)->isoFormat('h:m A, DD-MM-YYYY') }}</td>
+                    </tr>
                     <tr>
                         <th>Nama Kasir</th>
                         <td>:</td>
