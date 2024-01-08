@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\Menu;
-use App\Models\Category;
 use App\Models\History;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\DB;
@@ -25,8 +26,12 @@ class AdminController extends Controller
         ->orderByDesc('total_terjual')
         ->limit(1)
         ->first();
-        $order = TransactionDetail::sum('jumlah_beli');
-        $pendapatan = TransactionDetail::sum('total_harga');
+
+        $now = Carbon::now();
+        $order = DB::table('transaction_details')->whereMonth('created_at', $now)->sum('jumlah_beli');
+        $pendapatan = DB::table('transaction_details')->whereMonth('created_at', $now)->sum('total_harga');
+
+        //chart
         $jan = DB::table('histories')->whereMonth('created_at', 1)->sum('total_harga');
         $feb = DB::table('histories')->whereMonth('created_at', 2)->sum('total_harga');
         $mar = DB::table('histories')->whereMonth('created_at', 3)->sum('total_harga');
@@ -53,6 +58,7 @@ class AdminController extends Controller
             'Nov' => $nov,
             'Dec' => $dec,
         ];
+
         return view('admin.dashboard', compact('menu','terlaris','order','pendapatan','incomeChart'));
     }
 }

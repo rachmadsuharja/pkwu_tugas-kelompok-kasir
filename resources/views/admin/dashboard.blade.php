@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="small fw-bold text-primary mb-1">Jumlah Order (perbulan)</div>
+                                <div class="small fw-bold text-primary mb-1">Jumlah Order (Bulan ini)</div>
                                 <div class="h5">{{ number_format($order, 0) }}</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-hand-holding-hand fa-2x text-gray-200"></i></div>
@@ -67,7 +67,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="small fw-bold text-success mb-1">Pendapatan (perbulan)</div>
+                                <div class="small fw-bold text-success mb-1">Pendapatan (Bulan ini)</div>
                                 <div class="h5">{{ number_format($pendapatan, 0) }}</div>
                             </div>
                             <div class="ms-2"><i class="fas fa-sack-dollar fa-2x text-gray-200"></i></div>
