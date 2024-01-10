@@ -45,6 +45,7 @@ class CartController extends Controller
 
         Cart::create([
             'nama_menu' => $request->nama_menu,
+            'id_menu' => $request->id_menu,
             'harga_menu' => $request->harga_menu,
             'jumlah_beli' => $request->jumlah_beli,
             'total_harga' => $totalHarga
@@ -73,9 +74,28 @@ class CartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCartRequest $request, Cart $cart)
+    public function update(Request $request, $id)
     {
-        //
+        $menu = Cart::where('id_menu', $id)->first();
+        $validator = Validator::make($request->all(), [
+            'jumlah_beli' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            toastr()->error('Gagal Menambahkan Ke Keranjang', 'Gagal');
+            return to_route('transaction.index');
+        }
+
+        $totalBeli = $menu->jumlah_beli + $request->jumlah_beli;
+        $totalHarga = $menu->harga_menu * $totalBeli;
+
+        $menu->update([
+            'jumlah_beli' => $totalBeli,
+            'total_harga' => $totalHarga
+        ]);
+
+        toastr()->success('Berhasil Ditambahkan ke Keranjang');
+        return to_route('transaction.index');
     }
 
     /**

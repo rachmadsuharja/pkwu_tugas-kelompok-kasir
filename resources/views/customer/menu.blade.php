@@ -67,7 +67,7 @@
       <div class="row">
         <div class="col-lg-8">
           <h1>Welcome to <span>Bratva RPL</span></h1>
-          <h2>Rasakan nikmatnya kue dan kopi elegan</h2>
+          <h2>Rasakan nikmatnya kue dan kopi dengan cita rasa elegan</h2>
 
           <div class="btns">
             <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>

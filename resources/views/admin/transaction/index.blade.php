@@ -43,23 +43,41 @@
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="exampleModalLabel">Masukkan ke Keranjang</h5>
                                                     </div>
-                                                    <form action="{{ route('cart.store') }}" method="POST">
-                                                        @csrf
-                                                        <div class="modal-body">
-                                                            <div class="mb-3">
-                                                                <input type="hidden" name="nama_menu" value="{{ $menu->nama_menu }}">
-                                                                <input type="hidden" name="harga_menu" value="{{ $menu->harga }}">
+                                                    @if ($carts->pluck('id_menu')->contains($menu->id))
+                                                        <form action="{{ route('cart.update', $menu->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('put')
+                                                            <div class="modal-body">
+                                                                <div class="mb-3">
+                                                                    <label for="">Jumlah Beli</label>
+                                                                    <input class="form-control" id="jumlah_beli" name="jumlah_beli" type="number" placeholder="Jumlah Dibeli..." />
+                                                                </div>
                                                             </div>
-                                                            <div class="mb-3">
-                                                                <label for="">Jumlah Beli</label>
-                                                                <input class="form-control" id="jumlah_beli" name="jumlah_beli" type="number" placeholder="Jumlah Dibeli..." />
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                                                                <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
                                                             </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
-                                                            <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
-                                                        </div>
-                                                    </form>
+                                                        </form>
+                                                    @else
+                                                        <form action="{{ route('cart.store') }}" method="POST">
+                                                            @csrf
+                                                            <div class="modal-body">
+                                                                <div class="mb-3">
+                                                                    <input type="hidden" name="nama_menu" value="{{ $menu->nama_menu }}">
+                                                                    <input type="hidden" name="id_menu" value="{{ $menu->id }}">
+                                                                    <input type="hidden" name="harga_menu" value="{{ $menu->harga }}">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="">Jumlah Beli</label>
+                                                                    <input class="form-control" id="jumlah_beli" name="jumlah_beli" type="number" placeholder="Jumlah Dibeli..." />
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal">Batal</button>
+                                                                <button type="submit" class="btn btn-primary btn-sm">Tambah</button>
+                                                            </div>
+                                                        </form>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>

@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->string('nama_menu');
+            $table->unsignedBigInteger('id_menu');
             $table->string('harga_menu');
             $table->string('jumlah_beli');
             $table->string('total_harga');
+            $table->foreign('id_menu')->references('id')->on('menus')->onUpdate('restrict')->onDelete('restrict');
             $table->timestamps();
         });
     }
