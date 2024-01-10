@@ -31,8 +31,8 @@
                                                 <label class="small mb-1" for="inputEmailAddress">Shift Kerja</label>
                                                 <select name="shift" class="form-control" id="shift">
                                                     <option value="" selected disabled>Pilih Shift</option>
-                                                    <option value="Siang/06:00-18:00">Siang/06:00-18:00</option>
-                                                    <option value="Malam/18:00-06:00">Malam/18:00-06:00</option>
+                                                    <option value="Pagi/06:00-14:00">Pagi/06:00-14:00</option>
+                                                    <option value="Sore/14:00-23:00">Sore/14:00-23:00</option>
                                                 </select>
                                             </div>
                                             <!-- Form Group (email address)-->

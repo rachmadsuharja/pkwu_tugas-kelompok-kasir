@@ -27,32 +27,19 @@
         }
 
         @media print {
-            body {
-                font-size: 12pt;
-            }
-
-            .hide-on-print {
-                display: none;
-            }
-
-            .print-only {
-                display: block;
-            }
-
-            /* Contoh pengaturan cetakan */
             @page {
-                size: A4;
-                margin: 2cm;
+                size: 130mm 180mm;
+                margin: 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid ">
         <div class="row mt-1 d-flex justify-content-center">
-            <div class="col-sm-8 col-md-6 col-lg-4 col-xl-4 border border-black p-3">
+            <div class="col-sm-8 col-md-6 col-lg-4 col-xl-4">
                 <header class="text-center">
-                    <h5>Cafe/Resto</h5>
+                    <h5>Bratva RPL Stand</h5>
                     <p>Jl. H. O.S. Cokroaminoto No.161, Tompokersan, Lumajang, Jawa Timur, 67316</p>
                     <p>No. Telp: (0334) 881866</p>
                 </header>
@@ -110,8 +97,8 @@
                         </tr>
                     </tfoot>
                 </table>
-                <footer class="text-center">
-                    <p>Terimakasih Telah Berkunjung</p>
+                <footer class="text-center mt-5">
+                    <p>Terimakasih Telah Berbelanja</p>
                 </footer>
             </div>
         </div>

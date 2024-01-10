@@ -17,32 +17,32 @@ class MenuSeeder extends Seeder
         DB::table('menus')->insert([
             [
                 'nama_menu' => 'Americano',
-                'id_kategori' => 1,
+                'id_kategori' => 2,
                 'harga' => 5000,
                 'status' => 'Tersedia'
             ], [
                 'nama_menu' => 'Iced Cafe Latte',
-                'id_kategori' => 1,
+                'id_kategori' => 2,
                 'harga' => 16000,
                 'status' => 'Tersedia'
             ], [
                 'nama_menu' => 'Matcha Coffe',
-                'id_kategori' => 1,
+                'id_kategori' => 2,
                 'harga' => 16000,
                 'status' => 'Tersedia'
             ], [
                 'nama_menu' => 'Plain Bread',
-                'id_kategori' => 2,
+                'id_kategori' => 1,
                 'harga' => 5000,
                 'status' => 'Tersedia'
             ], [
                 'nama_menu' => 'Chicken Bread',
-                'id_kategori' => 2,
+                'id_kategori' => 1,
                 'harga' => 16000,
                 'status' => 'Tersedia'
             ], [
                 'nama_menu' => 'Beef Bread',
-                'id_kategori' => 2,
+                'id_kategori' => 1,
                 'harga' => 16000,
                 'status' => 'Tersedia'
             ]

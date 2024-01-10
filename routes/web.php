@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransaksiController;
 
@@ -21,8 +22,10 @@ use App\Http\Controllers\TransaksiController;
 |
 */
 
+Route::get('/', [CustomerController::class, 'index'])->name('menu');
+
 Route::middleware('guest')->group(function () {
-    Route::get('/', [AuthController::class,'login'])->name('login');
+    Route::get('/login', [AuthController::class,'login'])->name('login');
     Route::post('postLogin', [AuthController::class, 'postLogin'])->name('post-login');
 });
 
