@@ -28,7 +28,7 @@
 
         @media print {
             @page {
-                size: 130mm 180mm;
+                size: 58mm 100mm;
                 margin: 0;
             }
         }

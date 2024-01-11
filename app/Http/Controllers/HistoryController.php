@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Dompdf;
 use App\Models\History;
+use App\Models\TransactionDetail;
+use Illuminate\Support\Facades\View;
 use App\Http\Requests\StoreHistoryRequest;
 use App\Http\Requests\UpdateHistoryRequest;
-use App\Models\TransactionDetail;
-use Dompdf\Dompdf;
 
 class HistoryController extends Controller
 {
@@ -74,5 +75,5 @@ class HistoryController extends Controller
         $history =  History::where('no_transaksi', $id)->first();
         $details = TransactionDetail::where('no_transaksi', $id)->get();
         return view('admin.history.invoice', compact('history','details'));
-    }
+}
 }
