@@ -57,8 +57,13 @@ class TransactionController extends Controller
         $now = Carbon::now();
         $nomorTransaksi = $now->format('d'.'m'.'y').rand(100000, 999999);
         $kasir = Auth::user()->nama;
-        $cart = Cart::pluck('nama_menu')->toArray();
-        $item = implode(', ', $cart);
+        $allDataInCart = Cart::pluck('nama_menu')->toArray();
+        $cart = collect($allDataInCart)->take(4)->all();
+        if (count($allDataInCart) > 4) {
+            $item = implode(', ', $cart).', dll';
+        } else {
+            $item = implode(', ', $cart);
+        }
         $kembalian = $bayar - $harga;
         History::create([
             'no_transaksi' => $nomorTransaksi,
