@@ -14,18 +14,15 @@
         p {
             margin: 0;
             padding: 0;
-            font-size: .9rem;
+            font-size: 12pt;
         }
         .info tr td {
             padding: 3px;
-            font-size: .9rem;
+            font-size: .8rem;
         }
-        .table tfoot tr th {
-            font-size: 1rem;
-            padding: 0 .5rem;
-            border: 0;
+        .table tr td, .table tr th {
+            font-size: 11pt;
         }
-
         @media print {
             @page {
                 size: 58mm 100mm;
@@ -39,7 +36,7 @@
         <div class="row mt-1 d-flex justify-content-center">
             <div class="col-sm-8 col-md-6 col-lg-4 col-xl-4">
                 <header class="text-center">
-                    <h5>Bratva RPL Stand</h5>
+                    <h5>Bratva XII RPL Stand</h5>
                     <p>Jl. H. O.S. Cokroaminoto No.161, Tompokersan, Lumajang, Jawa Timur, 67316</p>
                     <p>No. Telp: (0334) 881866</p>
                 </header>
@@ -64,41 +61,35 @@
                     </table>
                 </div>
                 <table class="table">
-                    <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Harga</th>
+                        <th>QTY</th>
+                        <th>Sub Total</th>
+                    </tr>
+                    @foreach ($details as $detail)
                         <tr>
-                            <th>Nama</th>
-                            <th>Harga</th>
-                            <th>QTY</th>
-                            <th>Sub Total</th>
+                            <td>{{ $detail->nama_menu }}</td>
+                            <td>{{ number_format($detail->harga_menu) }}</td>
+                            <td>{{ $detail->jumlah_beli }}</td>
+                            <td>{{ number_format($detail->total_harga) }}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($details as $detail)
-                            <tr>
-                                <td>{{ $detail->nama_menu }}</td>
-                                <td>{{ number_format($detail->harga_menu) }}</td>
-                                <td>{{ $detail->jumlah_beli }}</td>
-                                <td>{{ number_format($detail->total_harga) }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th colspan="3">Total</th>
-                            <th class="fw-normal">{{ number_format($history->total_harga) }}</th>
-                        </tr>
-                        <tr>
-                            <th colspan="3">Bayar</th>
-                            <th class="fw-normal">{{ number_format($history->total_bayar) }}</th>
-                        </tr>
-                        <tr>
-                            <th colspan="3">Kembali</th>
-                            <th class="fw-normal">{{ number_format($history->uang_kembali) }}</th>
-                        </tr>
-                    </tfoot>
+                    @endforeach
+                    <tr>
+                        <th colspan="3">Total</th>
+                        <td class="fw-normal">{{ number_format($history->total_harga) }}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Bayar</th>
+                        <td class="fw-normal">{{ number_format($history->total_bayar) }}</td>
+                    </tr>
+                    <tr>
+                        <th colspan="3">Kembali</th>
+                        <td class="fw-normal">{{ number_format($history->uang_kembali) }}</td>
+                    </tr>
                 </table>
                 <footer class="text-center mt-5">
-                    <p>Terimakasih Telah Berbelanja</p>
+                    <p>Terimakasih Telah Berbelanja :)</p>
                 </footer>
             </div>
         </div>
