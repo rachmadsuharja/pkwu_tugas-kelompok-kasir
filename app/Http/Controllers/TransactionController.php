@@ -85,7 +85,7 @@ class TransactionController extends Controller
         }
         Cart::truncate();
         toastr()->success('Berhasil');
-        return to_route('history.index');
+        return to_route('print-invoice', $nomorTransaksi);
     }
 
     /**
