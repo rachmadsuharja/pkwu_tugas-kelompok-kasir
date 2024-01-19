@@ -56,7 +56,7 @@
                         <tr>
                             <td>Nama Kasir</td>
                             <td>:</td>
-                            <td>Admin RPL</td>
+                            <td>{{ $history->nama_kasir }}</td>
                         </tr>
                     </table>
                 </div>
