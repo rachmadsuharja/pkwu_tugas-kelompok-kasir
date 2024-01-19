@@ -6,6 +6,7 @@ use Dompdf\Dompdf;
 use App\Models\History;
 use App\Models\TransactionDetail;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Request;
 use App\Http\Requests\StoreHistoryRequest;
 use App\Http\Requests\UpdateHistoryRequest;
 
@@ -66,9 +67,12 @@ class HistoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(History $history)
+    public function destroy($id)
     {
-        //
+        $history = History::findOrFail($id);
+        $history->delete();
+        toastr()->success('Berhasil','Berhasil menghapus data');
+        return to_route('history.index');
     }
 
     public function printInvoice($id) {

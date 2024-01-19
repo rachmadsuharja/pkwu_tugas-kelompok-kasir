@@ -67,7 +67,34 @@
             </div>
         </div>
     </div>
-    <div class="card-footer">
+    <div class="card-footer d-flex justify-content-between">
         <a href="{{ route('history.index') }}" class="btn btn-primary btn-sm">Kembali</a>
+        <form action="{{ route('history.destroy', $history->no_transaksi) }}" id="deleteHistoryForm" onsubmit="deleteHistory(event)" method="POST">
+            @method('delete')
+            @csrf
+            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+        </form>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        function deleteHistory(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: "Hapus",
+                text: "Apakah Anda yakin ingin menghapus data ini?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya",
+                cancelButtonText: "Batal",
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deleteHistoryForm').submit();
+                }
+            });
+        }
+    </script>
 @endsection
