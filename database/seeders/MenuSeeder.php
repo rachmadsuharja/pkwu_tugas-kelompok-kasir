@@ -16,19 +16,34 @@ class MenuSeeder extends Seeder
     {
         DB::table('menus')->insert([
             [
-                'nama_menu' => 'Dimsum',
-                'id_kategori' => 1,
-                'harga' => 2000,
-                'status' => 'Tersedia'
-            ], [
-                'nama_menu' => 'Es Jagung',
+                'nama_menu' => 'Expresso',
                 'id_kategori' => 2,
                 'harga' => 6000,
                 'status' => 'Tersedia'
             ], [
-                'nama_menu' => 'Brownies',
+                'nama_menu' => 'Iced Cafe Latte',
+                'id_kategori' => 2,
+                'harga' => 8000,
+                'status' => 'Tersedia'
+            ], [
+                'nama_menu' => 'Matcha Smoothie',
+                'id_kategori' => 2,
+                'harga' => 8000,
+                'status' => 'Tersedia'
+            ], [
+                'nama_menu' => 'Plain Bread',
                 'id_kategori' => 1,
-                'harga' => 5000,
+                'harga' => 12000,
+                'status' => 'Tersedia'
+            ], [
+                'nama_menu' => 'Chicken Bread',
+                'id_kategori' => 1,
+                'harga' => 12000,
+                'status' => 'Tersedia'
+            ], [
+                'nama_menu' => 'Beef Bread',
+                'id_kategori' => 1,
+                'harga' => 12000,
                 'status' => 'Tersedia'
             ]
         ]);

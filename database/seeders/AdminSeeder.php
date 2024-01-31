@@ -21,17 +21,7 @@ class AdminSeeder extends Seeder
                 'username'=> 'rachmadsuharja',
                 'password' => Hash::make('harja123'),
                 'shift' => 'Pagi/06:00-14:00',
-            ], [
-                'nama' => 'Rosa',
-                'username'=> 'rosa',
-                'password' => Hash::make('rosa123'),
-                'shift' => 'Pagi/06:00-14:00',
-            ], [
-                'nama' => 'Fisa',
-                'username' => 'fisa',
-                'password' => Hash::make('fisa123'),
-                'shift' => 'Pagi/06:00-14:00',
-            ],
+            ]
         ]);
     }
 }
